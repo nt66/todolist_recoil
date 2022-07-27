@@ -1,2 +1,3 @@
-# todolist_recoli
-recoli todo list
+# todolist_recoil
+recoil todo list demo
+
