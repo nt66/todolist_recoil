@@ -1,6 +1,6 @@
 import React from 'react';
 import { 
-  recoilRoot,
+  RecoilRoot,
   atom,
   selector,
   useRecoilState,
@@ -10,9 +10,12 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <h1>recoil todo list</h1>
-    </div>
+    <RecoilRoot>
+      <div className="App">
+        <h1>Recoil todo list</h1>
+        
+      </div>
+    </RecoilRoot>
   );
 }
 
