@@ -3,7 +3,6 @@ import {
   useRecoilState,
   useRecoilValue,
   useSetRecoilState,
-  selector,
   atom,
 } from 'recoil';
 
@@ -12,23 +11,10 @@ const todoListState = atom({
   default: [],
 });
 
-// main
-const TodoList = ()=>{
-  // useRecoilValue just to get atom value; todolist is to render
-  const todoList = useRecoilValue(todoListState);
-  return (<>
-      <TodoItemCreator />
-      {todoList.map((todoItem) => (
-        <TodoItem key={todoItem.id} item={todoItem} />
-      ))}
-      </>
-  )
-};
-
 // create a new item 
-const  TodoItemCreator =()=> {
+const TodoItemCreator = () => {
   const [inputValue, setInputValue] = useState('');
-  
+
   // useSetRecoilState to set atom value
   const setTodoList = useSetRecoilState(todoListState);
 
@@ -44,7 +30,7 @@ const  TodoItemCreator =()=> {
     setInputValue('');
   };
 
-  const onChange = ({target: {value}}) => {
+  const onChange = ({ target: { value } }) => {
     setInputValue(value);
   };
 
@@ -63,11 +49,11 @@ function getId() {
 }
 
 // Item Object
-const  TodoItem =({item})=> {
+const TodoItem = ({ item }) => {
   const [todoList, setTodoList] = useRecoilState(todoListState);
   const index = todoList.findIndex((listItem) => listItem === item);
 
-  const editItemText = ({target: {value}}) => {
+  const editItemText = ({ target: { value } }) => {
     const newList = replaceItemAtIndex(todoList, index, {
       ...item,
       text: value,
@@ -111,5 +97,18 @@ function replaceItemAtIndex(arr, index, newValue) {
 function removeItemAtIndex(arr, index) {
   return [...arr.slice(0, index), ...arr.slice(index + 1)];
 }
+
+// main
+const TodoList = () => {
+  // useRecoilValue just to get atom value; todolist is to render
+  const todoList = useRecoilValue(todoListState);
+  return (<>
+    <TodoItemCreator />
+    {todoList.map((todoItem) => (
+      <TodoItem key={todoItem.id} item={todoItem} />
+    ))}
+  </>
+  )
+};
 
 export default TodoList;

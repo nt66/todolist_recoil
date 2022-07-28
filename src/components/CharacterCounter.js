@@ -20,7 +20,7 @@ const charCountState = selector({
   }
 });
 
-// mian
+// main
 const CharacterCounter = () => (
   <div>
     <TextInput />
@@ -28,7 +28,7 @@ const CharacterCounter = () => (
   </div>
 )
 
-// component 1
+// component1
 function CharacterCount() {
   const count = useRecoilValue(charCountState);
   return (<>Character Count is: {count}</>);
