@@ -13,8 +13,8 @@ const textState = atom({
 
 // selector pure function
 const charCountState = selector({
-  key:'charCountState',
-  get:({get})=>{
+  key: 'charCountState',
+  get: ({ get }) => {
     const text = get(textState);
     return text.length;
   }
@@ -31,10 +31,10 @@ const CharacterCounter = () => (
 // component 1
 function CharacterCount() {
   const count = useRecoilValue(charCountState);
-  return <>Character Count is: {count}</>;
+  return (<>Character Count is: {count}</>);
 }
 
-// component 2
+//
 const TextInput = () => {
   // 获取atom数据
   const [text, setText] = useRecoilState(textState);
